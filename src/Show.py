@@ -1,28 +1,35 @@
 from time import asctime, localtime, time
 
+# used to represent a single television show that the amount of episodes watched it being
+# tracked.
+
 
 class Show:
-    """
-    Used to represent a single television show and track the number of episodes watched
-    """
+    # show_name : string
+    # show_season_number: int
+    # episodes_watched : int
+    # date_created : string
 
-    def __init__(self, name: str, season_number: int, episodes_watched: int, date_created: str):
+    def __init__(self, name, season_number, episodes_watched, date_created):
         self.name = name
         self.season_number = season_number
         self.episodes_watched = episodes_watched
         self.date_created = date_created
 
-    def __str__(self) -> str:
+    def __str__(self):
         return "Name: " + self.name + "\nEpisodes Seen: " + str(self.episodes_watched) + "\nDate Created: " \
                + str(self.date_created) + "\nSeason Number: " + str(self.season_number)
 
 
-class ShowWithIndex:
-    """
-    Holds a Show class and its index in the current show list
-    """
+# holds a Show Class, and it's index in the current
+# show list.
 
-    def __init__(self, show: Show, index: int):
+
+class ShowWithIndex:
+    # show : Show Class
+    # index : int
+
+    def __init__(self, show, index):
         self.show = show
         self.index = index
 
@@ -30,6 +37,5 @@ class ShowWithIndex:
 # create new show with possible sane defaults
 
 
-def create_show(show_name: str, episodes_watched: int = 0, season_number: int = 1,
-                date_created: str = asctime(localtime(time()))) -> Show:
+def create_show(show_name, episodes_watched=0, season_number=1, date_created=asctime(localtime(time()))):
     return Show(show_name, season_number, episodes_watched, date_created)
